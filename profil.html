@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="Kraft-Check">
+<meta name="theme-color" content="#D7191C">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="dtv-icon.png">
+<link rel="icon" href="dtv-icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;600;700&display=swap" rel="stylesheet">
+<title>DTV 1847 – Kraft-Check · Profil</title>
+<style>:root{--red:#D7191C;--red-deep:#A51013;--ink:#2B2B2B;--bg:#F1F1F0;--line:#DEDEDC;--muted:#6B6B68;--paper:#fff;
+  --blue:#1D6FB8;--green:#2E9D55;--yellow:#FFD400;
+  --cond:'Barlow Condensed',system-ui,sans-serif;--body:'Barlow',system-ui,-apple-system,sans-serif}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 var(--body);overflow-x:hidden}
+a{color:var(--blue)}
+button{font-family:inherit}
+.appbar{background:var(--ink);color:#fff;padding-top:env(safe-area-inset-top);position:sticky;top:0;z-index:20}
+.appbar .in{display:flex;align-items:center;gap:10px;max-width:980px;margin:0 auto;padding:6px 10px}
+.appbar .brand{display:flex;align-items:center;gap:8px;color:#fff;text-decoration:none;font:700 18px var(--cond);white-space:nowrap;flex:0 0 auto}
+.appbar .brand img{width:30px;height:30px;border-radius:6px;background:#fff}
+.tabs{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;flex:1 1 auto;min-width:0}
+.tabs::-webkit-scrollbar{display:none}
+.tabs a{color:#ddd;text-decoration:none;font:600 16px var(--cond);padding:10px 12px;min-height:44px;display:flex;align-items:center;white-space:nowrap;border-bottom:3px solid transparent}
+.tabs a.on{color:#fff;border-bottom-color:var(--red)}
+.hero{background:var(--red);color:#fff;padding:22px 16px 26px;position:relative;overflow:hidden}
+.hero .in{max-width:980px;margin:0 auto}
+.hero h1{font:700 34px/1 var(--cond);margin:0 0 6px}
+.hero p{margin:0;opacity:.92;font-size:15px}
+.hero:after{content:'';position:absolute;left:0;right:0;bottom:6px;height:4px;background:repeating-linear-gradient(90deg,rgba(255,255,255,.9) 0 46%,transparent 46% 50%)}
+.jump{background:#fff;border-bottom:1px solid var(--line)}
+.jump .in{max-width:980px;margin:0 auto;display:flex;gap:6px;overflow-x:auto;padding:6px 10px;scrollbar-width:none}
+.jump .in::-webkit-scrollbar{display:none}
+.jump a{white-space:nowrap;text-decoration:none;color:var(--ink);font:600 14.5px var(--body);padding:8px 10px;border-radius:999px;background:var(--bg);min-height:36px;display:flex;align-items:center}
+main{max-width:980px;margin:0 auto;padding:14px}
+h2{font:700 24px var(--cond);margin:22px 0 4px;scroll-margin-top:70px}
+.lead{margin:0 0 10px;color:var(--muted);font-size:14.5px}
+.block{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:12px}
+.block h3{margin:0 0 6px;font:700 19px var(--cond)}
+.mark-red{border-left:7px solid var(--red)}.mark-yellow{border-left:7px solid var(--yellow)}.mark-green{border-left:7px solid var(--green)}.mark-blue{border-left:7px solid var(--blue)}
+.btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.btn{font:600 15px var(--body);border:1.5px solid var(--ink);background:#fff;color:var(--ink);border-radius:6px;padding:9px 15px;cursor:pointer;min-height:44px;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:6px}
+.btn.primary{background:var(--red);border-color:var(--red);color:#fff}
+.btn.small{min-height:36px;padding:6px 11px;font-size:14px}
+.btn.danger{border-color:var(--red);color:var(--red)}
+.btn.danger.confirm{background:var(--red);color:#fff}
+.btn:disabled{opacity:.45;cursor:default}
+.note{font-size:13.5px;color:var(--muted);margin:8px 0 0}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font:600 14.5px var(--body);border:1.5px solid var(--line);background:#fff;color:var(--ink);border-radius:999px;padding:7px 13px;min-height:40px;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+.chip.on{background:var(--ink);border-color:var(--ink);color:#fff}
+.amp{display:inline-flex;align-items:center;justify-content:center;min-width:38px;height:30px;border-radius:6px;font:700 14px var(--body);padding:0 6px;border:1.5px solid transparent}
+.amp.rot{background:var(--red);color:#fff}.amp.gelb{background:var(--yellow);color:#2B2B2B}.amp.gruen{background:var(--green);color:#fff}.amp.leer{background:#fff;border-color:var(--line);color:var(--muted)}
+.amps{display:flex;gap:5px;flex-wrap:wrap}
+.badge{display:inline-flex;align-items:center;font:600 13px var(--body);padding:2px 9px;border-radius:999px;background:#E6EEF7;color:#164E85}
+.badge.grow{background:#FFF4C2;color:#5B4700}
+.badge.warn{background:#FBE3E3;color:#8E0F12}
+.list{display:flex;flex-direction:column;gap:8px}
+.row{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.person{display:flex;flex-direction:column;gap:8px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;text-decoration:none;color:var(--ink)}
+.person .nm{font:700 20px var(--cond)}
+.person .meta{font-size:14px;color:var(--muted)}
+label.f{display:flex;flex-direction:column;gap:4px;font-weight:600;font-size:14.5px}
+input.t,select.t{font:16px var(--body);padding:9px 10px;border:1.5px solid var(--line);border-radius:6px;min-height:44px;background:#fff;color:var(--ink);width:100%}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px}
+.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px}
+.tile{display:flex;gap:12px;align-items:center;background:#fff;border:1px solid var(--line);border-left:7px solid var(--red);border-radius:12px;padding:12px;text-decoration:none;color:var(--ink);min-height:80px}
+.tile .ic{width:54px;height:54px;flex:0 0 auto}
+.tile .tt{font:700 22px/1.1 var(--cond)}
+.tile .ts{font-size:14px;color:var(--muted)}
+.fig{background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden;aspect-ratio:200/180;width:100%}
+.fig svg{display:block;width:100%;height:100%}
+.figs{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.figcard{background:#fff;border:1px solid var(--line);border-radius:12px;padding:8px;text-align:center;cursor:pointer;font:inherit;color:var(--ink)}
+.figcard .fig{border:0}
+.figcard .k{font-size:12.5px;color:var(--muted)}
+.figcard .n{font:600 15px/1.2 var(--body);margin-top:2px}
+dl.card{display:grid;grid-template-columns:86px minmax(0,1fr);gap:6px 10px;margin:10px 0 0;font-size:15px}
+dl.card dt{font-weight:700;color:var(--muted)}
+dl.card dd{margin:0}
+dl.card dt.stop{color:var(--red-deep)}
+.msg{background:#fff;border:1px solid var(--line);border-left:6px solid var(--green);border-radius:8px;padding:10px 12px;margin:10px 0;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.msg.bad{border-left-color:var(--red)}
+.msg.info{border-left-color:var(--blue)}
+.stepper{display:flex;align-items:center;gap:6px}
+.stepper input{text-align:center;font:700 22px var(--cond)}
+.stepper .btn{min-width:46px;font-size:20px;padding:6px}
+.side{border:1px solid var(--line);border-radius:10px;padding:10px;background:#FAFAF9}
+.side .lb{font-weight:700;font-size:14px;color:var(--muted);margin-bottom:4px}
+.result{border-radius:10px;padding:10px 12px;margin-top:12px;font-size:15px}
+.result.rot{background:#FBE3E3}.result.gelb{background:#FFF4C2}.result.gruen{background:#E2F3E8}.result.leer{background:#F4F4F2}
+.st{display:flex;gap:4px}
+.st span{flex:1;text-align:center;font:600 13px var(--body);padding:5px 0;border-radius:6px;border:1.5px solid var(--line);color:var(--muted)}
+.st span.on{background:var(--ink);border-color:var(--ink);color:#fff}
+.st span.cur{background:var(--red);border-color:var(--red);color:#fff}
+.dose{font:700 26px var(--cond)}
+.ex{display:grid;grid-template-columns:minmax(0,1fr);gap:12px}
+@media (min-width:700px){.ex{grid-template-columns:260px minmax(0,1fr)}}
+table.tb{border-collapse:collapse;width:100%;font-size:14.5px}
+table.tb th,table.tb td{border-bottom:1px solid var(--line);padding:7px 6px;text-align:left;vertical-align:top}
+table.tb th{font-weight:700;color:var(--muted);font-size:13.5px}
+.scroll{overflow-x:auto}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:50;display:flex;align-items:flex-start;justify-content:center;padding:max(16px,env(safe-area-inset-top)) 12px 16px;overflow-y:auto}
+.overlay .box{background:#fff;border-radius:14px;border-top:8px solid var(--red);max-width:560px;width:100%;padding:14px 16px}
+.show{position:fixed;inset:0;background:#fff;z-index:60;display:flex;flex-direction:column;padding:max(12px,env(safe-area-inset-top)) 16px 16px;overflow-y:auto}
+.show .top{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.show .big{max-width:520px;width:100%;margin:8px auto}
+.show h2{font-size:34px;margin:6px 0}
+.show .dose{font-size:40px}
+.faces{display:inline-flex;gap:3px}
+.faces svg{width:20px;height:20px}
+.legend{font-size:13.5px;color:var(--muted)}
+.hide{display:none!important}
+footer{max-width:980px;margin:0 auto;padding:0 14px 40px;font-size:13px;color:var(--muted)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+.reg{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 12px;align-items:start}
+.reg .amp{margin-top:2px}
+</style>
+</head>
+<body>
+<header class="appbar"><div class="in"><a class="brand" href="index.html"><img src="dtv-icon.png" alt="">DTV 1847</a><nav class="tabs" aria-label="Bereiche"><a href="index.html">Start</a><a href="test.html">Testtag</a><a href="plan.html">Plan</a><a href="uebungen.html">Übungen</a></nav></div></header>
+<header class="hero"><div class="in"><h1 id="nm">Profil</h1><p id="sub"></p></div></header>
+<nav class="jump" aria-label="Sprungleiste"><div class="in"><a href="#profil">Kapazitätsprofil</a><a href="#reife">Reife und Phase</a><a href="#daten">Stammdaten</a></div></nav>
+<main id="main"></main>
+<footer>Profil · Version 2026-11-17a · Ampel, Phase nach Büsch, Verlauf</footer>
+<script>/* ===== Kraft-Check: gemeinsamer Kern (Daten, Katalog, Regeln, Hilfen) ===== */
+const VER = '2026-11-17a';
+const KEY = 'dtv-kraft-v1', UNDO_KEY = 'dtv-kraft-undo-v1';
+
+/* ---------- Hilfen ---------- */
+const $ = (s, r) => (r || document).querySelector(s);
+const $$ = (s, r) => Array.from((r || document).querySelectorAll(s));
+function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])); }
+function uid() { return Date.now().toString(36) + Math.random().toString(36).slice(2, 7); }
+function today() { const d = new Date(); return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); }
+function fmtDate(iso) { if (!iso) return ''; const p = iso.split('-'); return p[2] + '.' + p[1] + '.'; }
+function fmtDateY(iso) { if (!iso) return ''; const p = iso.split('-'); return p[2] + '.' + p[1] + '.' + p[0]; }
+function num(v) { if (v == null) return null; const s = String(v).trim().replace(',', '.'); if (s === '') return null; const n = Number(s); return isFinite(n) ? n : null; }
+function fmtNum(n, d) { if (n == null || !isFinite(n)) return '–'; return n.toFixed(d == null ? 1 : d).replace('.', ','); }
+function yearsBetween(a, b) { return (new Date(b + 'T12:00:00') - new Date(a + 'T12:00:00')) / (365.25 * 864e5); }
+function on(root, ev, sel, fn) { root.addEventListener(ev, e => { const t = e.target.closest(sel); if (t && root.contains(t)) fn(t, e); }); }
+function qs(name) { return new URLSearchParams(location.search).get(name); }
+
+/* ---------- Daten ---------- */
+const AREAS = { stamm: 'Gruppen und Athleten', results: 'Testergebnisse', plans: 'Pläne' };
+function normalize(o) {
+  o = (o && typeof o === 'object') ? o : {};
+  o.v = 1;
+  o.groups = Array.isArray(o.groups) ? o.groups.filter(g => g && g.id).map(g => ({ id: String(g.id), name: String(g.name || 'Gruppe') })) : [];
+  o.athletes = Array.isArray(o.athletes) ? o.athletes.filter(a => a && a.id).map(a => ({
+    id: String(a.id), g: a.g ? String(a.g) : '', name: String(a.name || 'Ohne Namen'), sex: a.sex === 'm' ? 'm' : 'w',
+    birth: /^\d{4}-\d{2}-\d{2}$/.test(a.birth || '') ? a.birth : '', phase: ['auto', 'M', 'K', 'J'].includes(a.phase) ? a.phase : 'auto'
+  })) : [];
+  o.results = Array.isArray(o.results) ? o.results.filter(r => r && r.id && r.a && r.date).map(r => {
+    const m = (r.m && typeof r.m === 'object') ? r.m : {};
+    const t = (r.t && typeof r.t === 'object') ? r.t : {};
+    const mm = {};
+    ['h', 'sh', 'w'].forEach(k => { mm[k] = Array.isArray(m[k]) ? m[k].map(x => (x == null || x === '') ? null : Number(x)).slice(0, 3) : []; });
+    const tt = {};
+    Object.keys(t).forEach(k => {
+      const x = t[k] || {};
+      tt[k] = { l: x.l == null || x.l === '' ? null : Number(x.l), r: x.r == null || x.r === '' ? null : Number(x.r),
+        pain: [0, 2, 5].includes(x.pain) ? x.pain : 0, tech: x.tech !== false, warn: !!x.warn, gelb: !!x.gelb };
+    });
+    return { id: String(r.id), a: String(r.a), date: r.date, m: mm, t: tt };
+  }) : [];
+  o.plans = (o.plans && typeof o.plans === 'object') ? o.plans : {};
+  Object.keys(o.plans).forEach(aid => {
+    const p = o.plans[aid] || {};
+    p.regions = (p.regions && typeof p.regions === 'object') ? p.regions : {};
+    Object.keys(p.regions).forEach(k => { const r = p.regions[k] || {}; r.stage = [1, 2, 3].includes(r.stage) ? r.stage : 1; r.step = Math.max(0, parseInt(r.step) || 0); p.regions[k] = r; });
+    p.log = Array.isArray(p.log) ? p.log.slice(-200) : [];
+    p.check = p.check || null;
+    o.plans[aid] = p;
+  });
+  o.set = (o.set && typeof o.set === 'object') ? o.set : {};
+  return o;
+}
+function load() { try { return normalize(JSON.parse(localStorage.getItem(KEY) || 'null')); } catch (e) { return normalize(null); } }
+let db = load();
+function save() { try { localStorage.setItem(KEY, JSON.stringify(db)); } catch (e) { } }
+function setPref(k, v) { db.set[k] = v; save(); }
+
+/* ---------- Katalog ---------- */
+const REGIONS = [
+  { key: 'landung', name: 'Landung', short: 'La', fig: 't_sprung', test: 'Einbeiniger Weitsprung mit Landung', unit: 'cm', step: 5, dec: 0,
+    aufbau: 'Startlinie, Maßband am Boden. Auf einem Bein abspringen und auf demselben Bein landen.',
+    ansage: '„Spring so weit du kannst und lande auf demselben Bein. Halte 2 Sekunden.“',
+    zaehlt: 'Bester von 3 gültigen Versuchen je Seite, gemessen an der Ferse.',
+    stopLabel: 'Ungültig', stop: 'Landung nicht 2 s gehalten, zweiter Fuß setzt auf, Hand stützt ab.', tech: 'Landung nicht 2 s gehalten' },
+  { key: 'knie', name: 'Knie, Patellasehne', short: 'Kn', fig: 't_kniebeuge', test: 'Einbeinige Kniebeuge auf Kasten', unit: 'Wdh.', step: 1, dec: 0,
+    aufbau: 'Kasten etwa kniehoch hinter dem Kind. Arme vor der Brust verschränkt.',
+    ansage: '„Setz dich langsam auf den Kasten, tipp nur an und steh wieder auf.“',
+    zaehlt: 'Po berührt den Kasten, Knie bleibt über dem Fuß, kein Plumpsen.',
+    stopLabel: 'Abbruch', stop: 'Knie fällt nach innen, Arme lösen sich, anderes Bein setzt auf, Schmerz.', tech: 'Knie fällt nach innen' },
+  { key: 'add', name: 'Adduktoren', short: 'Ad', fig: 't_copenhagen', test: 'Copenhagen-Seitstütz, kurzer Hebel', unit: 's', step: 1, dec: 0,
+    aufbau: 'Seitlage, Unterarm unter der Schulter. Knie des oberen Beins auf der Bank.',
+    ansage: '„Heb die Hüfte, bis dein Körper gerade ist, und halte, so lange es geht.“',
+    zaehlt: 'Sekunden, solange der Körper gerade bleibt.',
+    stopLabel: 'Abbruch', stop: 'Hüfte sinkt ab, Körper dreht sich weg, Schmerz in der Leiste.', tech: 'Hüfte sinkt ab' },
+  { key: 'huefte', name: 'Hamstrings, Gesäß', short: 'Hü', fig: 't_bridge', test: 'Einbeinige Glute Bridge, Ferse auf der Bank', unit: 'Wdh.', step: 1, dec: 0,
+    aufbau: 'Rückenlage, Ferse auf der Bank, anderes Bein senkrecht nach oben.',
+    ansage: '„Drück die Hüfte hoch, bis Schulter, Hüfte und Knie eine Linie sind.“',
+    zaehlt: 'Hüfte ganz gestreckt, Becken bleibt gerade.',
+    stopLabel: 'Abbruch', stop: 'Hüfte erreicht die Linie nicht mehr, Becken kippt, Krampf oder Schmerz.', tech: 'Becken kippt' },
+  { key: 'wade', name: 'Wade, Achillessehne', short: 'Wa', fig: 't_fersenheben', test: 'Einbeiniges Fersenheben', unit: 'Wdh.', step: 1, dec: 0, metro: true,
+    aufbau: 'Fingerspitzen an der Wand oder Sprossenwand, Knie gestreckt. Klebeband auf Kopfhöhe bei voller Höhe.',
+    ansage: '„Geh so hoch du kannst und wieder runter, immer im Takt vom Piep.“',
+    zaehlt: 'Kopf erreicht das Klebeband, Knie gestreckt, im Takt (1 Wdh. alle 2 s).',
+    stopLabel: 'Abbruch', stop: 'Klebeband nicht mehr erreicht, 2× Takt verpasst, Knie beugt sich, Hochziehen an der Wand, Schmerz.', tech: 'Knie beugt sich' }
+];
+const REG = Object.fromEntries(REGIONS.map(r => [r.key, r]));
+const MESSEN = { fig: 't_messen', name: 'Messen', test: 'Körperhöhe stehend und sitzend, Körpermasse',
+  aufbau: 'Messlatte an der Wand, Bank für die Sitzhöhe, Waage. Ohne Schuhe.',
+  ansage: '„Stell dich mit Fersen, Po und Rücken an die Wand, Kopf gerade, tief einatmen.“',
+  zaehlt: 'Je Wert zwei Messungen. Weichen sie weniger als 0,4 cm bzw. 0,4 kg ab, wird gemittelt, sonst kommt eine dritte dazu.',
+  stopLabel: 'Achtung', stop: 'Sitzend: Knie und Hüfte 90°, Oberschenkel liegen auf, nicht anlehnen, nicht vom Boden abdrücken.' };
+
+const PHASES = { M: 'Mittleres Kindesalter', K: 'Spätes Kindesalter', J: 'Jugendalter' };
+/* Übungen je Region und Stufe; K gilt auch für M. */
+const PLAN = {
+  wade: [{ K: 'k_zehenstand', J: 'k_zehenstand', type: 'hold' }, { K: 'k_fersenheben', J: 'k_fersenheben', type: 'dyn', tempo: 1 }, { K: 'k_seilspringen', J: 'k_pogo', type: 'jump' }],
+  knie: [{ K: 'k_wallsit', J: 'k_wallsit', type: 'hold' }, { K: 'k_kniebeuge_stab', J: 'k_stepdown', type: 'dyn', tempo: 1 }, { K: 'k_landen_beid', J: 'k_niedersprung', type: 'jump' }],
+  huefte: [{ K: 'k_bridge_halten', J: 'k_bridge_halten', type: 'hold' }, { K: 'k_bridge_dyn', J: 'k_bridge_dyn', type: 'dyn', tempo: 1 }, { K: 'k_bridge_bank', J: 'k_nordic', type: 'dyn' }],
+  add: [{ K: 'k_ball', J: 'k_ball', type: 'hold' }, { K: 'k_copenhagen_kurz', J: 'k_copenhagen_kurz', type: 'hold' }, { K: 'k_copenhagen_lang', J: 'k_copenhagen_lang', type: 'hold' }],
+  landung: [{ K: 'k_landen_beid', J: 'k_landen_beid', type: 'jump' }, { K: 'k_landen_einbein', J: 'k_landen_einbein', type: 'jump' }, { K: 'k_hops', J: 'k_hops', type: 'jump' }]
+};
+const EXINFO = {
+  k_zehenstand: { side: 1, clean: 'Ganz oben bleiben, Knie gestreckt, nicht an der Wand hochziehen.', how: 'Einbeinig auf die Zehen und oben halten.' },
+  k_fersenheben: { side: 1, clean: '3 s hoch, 3 s runter, volle Höhe, Knie gestreckt.', how: 'Einbeinig langsam hoch und langsam runter.' },
+  k_seilspringen: { side: 0, clean: 'Leise, federnd, Fersen bleiben oben, Seil im Takt.', how: 'Beidbeinig springen, kleine Sprünge, spielerisch.' },
+  k_pogo: { side: 0, clean: 'Fersen bleiben oben, Bodenkontakt kurz und leise, Knie fast gestreckt.', how: 'Kleine, schnelle Sprünge aus den Fußgelenken.' },
+  k_wallsit: { side: 0, clean: 'Rücken an der Wand, Knie über den Füßen, Position gehalten.', how: 'An der Wand absitzen und halten.' },
+  k_kniebeuge_stab: { side: 0, clean: 'Fersen bleiben am Boden, Knie zeigen nach vorn, Rücken gerade.', how: 'Stab ohne Gewicht auf den Schultern, langsam tief und wieder hoch.' },
+  k_stepdown: { side: 1, clean: '3 s runter, Ferse tippt nur an, Knie bleibt über dem Fuß.', how: 'Auf dem Kasten stehen, anderes Bein langsam zum Boden.' },
+  k_niedersprung: { side: 0, clean: 'Leise landen, Knie zeigen nach vorn, 2 s stabil.', how: 'Vom niedrigen Kasten fallen lassen und weich abfangen.' },
+  k_bridge_halten: { side: 1, clean: 'Schulter, Hüfte und Knie in einer Linie, Becken bleibt gerade.', how: 'Einbeinig Hüfte hoch und halten.' },
+  k_bridge_dyn: { side: 1, clean: 'Oben kurz halten, Becken kippt nicht.', how: 'Einbeinig Hüfte hoch und runter.' },
+  k_bridge_bank: { side: 1, clean: 'Hüfte ganz strecken, Becken bleibt gerade.', how: 'Ferse auf der Bank, Hüfte hoch und runter.' },
+  k_nordic: { side: 0, clean: 'Hüfte bleibt gestreckt, langsam bis zum Abfangen.', how: 'Kniestand, Partner hält die Fersen, langsam nach vorn.' },
+  k_ball: { side: 0, clean: 'Ball fest drücken, ruhig weiteratmen.', how: 'Rückenlage, Knie gebeugt, Ball zwischen den Knien.' },
+  k_copenhagen_kurz: { side: 1, clean: 'Körper bleibt gerade, Hüfte sinkt nicht ab.', how: 'Seitstütz, Knie des oberen Beins auf der Bank.' },
+  k_copenhagen_lang: { side: 1, clean: 'Bein gestreckt, Körper gerade, nicht wegdrehen.', how: 'Seitstütz, Fuß des oberen Beins auf der Bank.' },
+  k_landen_beid: { side: 0, clean: 'Leise landen, Knie zeigen nach vorn, 2 s halten.', how: 'Strecksprung und beidbeinig weich landen.' },
+  k_landen_einbein: { side: 1, clean: 'Auf einem Bein landen, Knie über dem Fuß, 2 s halten.', how: 'Kleiner Sprung, einbeinig landen; vor, seitlich, schräg.' },
+  k_hops: { side: 1, clean: 'Genau auf die Markierung, kurz und leise.', how: 'Einbeinig hüpfen: vor, vor, zurück, zurück.' }
+};
+/* Dosierung: Spannen aus Quellen, Schrittgröße kein Richtwert. */
+const LADDER = {
+  hold: [[2, 30], [2, 45], [3, 45], [4, 45], [5, 45]],
+  dyn: [[1, 6], [1, 8], [1, 10], [1, 12], [2, 12], [3, 12]],
+  jump: [[1, 6], [1, 8], [1, 10], [1, 12], [2, 12], [3, 12]]
+};
+const PAUSE = { hold: '60–90 s Pause', dyn: 'etwa 1 min Pause', jump: 'etwa 1 min Pause' };
+const SOURCE_DOSE = 'Halten: Vortrag Folie 18 (5 × 30–45 s). Wiederholungen und Sätze: Lloyd et al. 2014 (Anfänger 1–2 Sätze, später 2–4 × 6–12). Schrittgröße: kein Richtwert.';
+const WARN = ['Ruheschmerz oder Nachtschmerz', 'Schmerz über 7/10', 'Plötzlicher Kraftverlust', 'Starke Schwellung', 'Verdacht auf Riss oder Unfall',
+  'Beschwerden länger als 6–8 Wochen', 'Hinken, Fieber oder Schmerz ohne Belastung', 'Druckschmerz an Ferse, Schienbeinkopf oder Kniescheibenspitze im Wachstum'];
+
+/* ---------- Reife und Phase ---------- */
+function measureVal(arr) {
+  const v = (arr || []).filter(x => x != null && isFinite(x));
+  if (v.length < 2) return null;
+  if (Math.abs(v[0] - v[1]) < 0.4) return (v[0] + v[1]) / 2;
+  if (v.length >= 3) return (v[0] + v[1] + v[2]) / 3;
+  return null;
+}
+function needThird(arr) { const v = (arr || []).filter(x => x != null && isFinite(x)); return v.length >= 2 && Math.abs(v[0] - v[1]) >= 0.4; }
+/* Mirwald et al. 2002: Abstand zum Wachstumsschub in Jahren */
+function mirwald(sex, age, h, sh, w) {
+  const ll = h - sh;
+  if (sex === 'm') return -9.236 + 0.0002708 * ll * sh - 0.001663 * age * ll + 0.007216 * age * sh + 0.02292 * (w / h * 100);
+  return -9.376 + 0.0001882 * ll * sh + 0.0022 * age * ll + 0.005841 * age * sh - 0.002658 * age * w + 0.07693 * (w / h * 100);
+}
+function resultsOf(aid) { return db.results.filter(r => r.a === aid).sort((a, b) => a.date < b.date ? -1 : 1); }
+function latestMeasure(aid) {
+  const rs = resultsOf(aid).slice().reverse();
+  for (const r of rs) { const h = measureVal(r.m.h), sh = measureVal(r.m.sh), w = measureVal(r.m.w); if (h && sh && w) return { date: r.date, h, sh, w }; }
+  return null;
+}
+function phaseOf(a, onDate) {
+  const d = onDate || today();
+  const age = a.birth ? yearsBetween(a.birth, d) : null;
+  const out = { age, code: 'K', src: '', offset: null, aphv: null, growth: false, unsure: false };
+  const m = latestMeasure(a.id);
+  if (m && a.birth) {
+    const ageM = yearsBetween(a.birth, m.date);
+    out.offset = mirwald(a.sex, ageM, m.h, m.sh, m.w) + (age - ageM);
+    out.aphv = ageM - mirwald(a.sex, ageM, m.h, m.sh, m.w);
+    out.growth = Math.abs(out.offset) <= 1;
+    out.src = 'Reife (Messung ' + fmtDate(m.date) + ')';
+    if (out.offset >= -1) out.code = 'J';
+    else out.code = calPre(a.sex, age);
+  } else if (age != null) {
+    out.src = 'Kalenderalter';
+    const c = calPhase(a.sex, age);
+    out.code = c.code; out.unsure = c.unsure;
+  } else { out.src = 'kein Geburtsdatum'; out.unsure = true; }
+  if (a.phase && a.phase !== 'auto') { out.code = a.phase; out.src = 'vom Trainer festgelegt'; }
+  out.label = PHASES[out.code];
+  return out;
+}
+/* Büsch (2017): Kalenderalter je Phase; Überlappungsjahre vorsichtig. */
+function calPre(sex, age) { return (sex === 'w' ? age < 8 : age < 9) ? 'M' : 'K'; }
+function calPhase(sex, age) {
+  if (sex === 'w') {
+    if (age < 8) return { code: 'M', unsure: false };
+    if (age < 9) return { code: 'M', unsure: true };
+    if (age < 10) return { code: 'K', unsure: false };
+    if (age < 11) return { code: 'K', unsure: true };
+    return { code: 'J', unsure: false };
+  }
+  if (age < 9) return { code: 'M', unsure: false };
+  if (age < 10) return { code: 'M', unsure: true };
+  if (age < 12) return { code: 'K', unsure: false };
+  if (age < 13) return { code: 'K', unsure: true };
+  return { code: 'J', unsure: false };
+}
+
+/* ---------- Ampel ---------- */
+function latestTest(aid, key) {
+  const rs = resultsOf(aid).slice().reverse();
+  for (const r of rs) { const t = r.t[key]; if (t && (t.l != null || t.r != null || t.pain > 3 || t.warn)) return { date: r.date, ...t }; }
+  return null;
+}
+function status(t) {
+  if (!t) return 'leer';
+  if (t.pain > 3 || t.warn) return 'rot';
+  if (!t.tech || t.gelb) return 'gelb';
+  if (t.l == null && t.r == null) return 'leer';
+  return 'gruen';
+}
+const ST_LABEL = { rot: 'Rot', gelb: 'Gelb', gruen: 'Grün', leer: 'nicht getestet' };
+function sideDiff(l, r) { if (l == null || r == null) return null; const mx = Math.max(l, r); return mx > 0 ? Math.round(Math.abs(l - r) / mx * 100) : 0; }
+function ampChips(aid) {
+  return '<div class="amps">' + REGIONS.map(R => { const s = status(latestTest(aid, R.key)); return `<span class="amp ${s}" aria-label="${esc(R.name)}: ${ST_LABEL[s]}" title="${esc(R.name)}: ${ST_LABEL[s]}">${R.short}</span>`; }).join('') + '</div>';
+}
+
+/* ---------- Plan ---------- */
+function planOf(aid) {
+  if (!db.plans[aid]) db.plans[aid] = { regions: {}, log: [], check: null };
+  return db.plans[aid];
+}
+function regionPlan(aid, key) {
+  const p = planOf(aid);
+  if (!p.regions[key]) p.regions[key] = { stage: 1, step: 0 };
+  return p.regions[key];
+}
+function exerciseFor(key, stage, code) {
+  const e = PLAN[key][stage - 1];
+  return { id: code === 'J' ? e.J : e.K, type: e.type, tempo: !!e.tempo };
+}
+function doseText(type, step, side) {
+  const L = LADDER[type]; const s = L[Math.min(step, L.length - 1)];
+  return type === 'hold' ? `${s[0]} × ${s[1]} s${side ? ' je Seite' : ''}` : `${s[0]} × ${s[1]} Wdh.${side ? ' je Seite' : ''}`;
+}
+function advance(aid, key, code) {
+  const rp = regionPlan(aid, key);
+  const ex = exerciseFor(key, rp.stage, code);
+  const n = LADDER[ex.type].length;
+  if (rp.step < n - 1) { rp.step++; return 'step'; }
+  if (rp.stage < 3) { rp.stage++; rp.step = 0; return 'stage'; }
+  return 'max';
+}
+function retreat(aid, key, code) {
+  const rp = regionPlan(aid, key);
+  if (rp.step > 0) { rp.step--; return 'step'; }
+  if (rp.stage > 1) { rp.stage--; const ex = exerciseFor(key, rp.stage, code); rp.step = LADDER[ex.type].length - 1; return 'stage'; }
+  return 'min';
+}
+
+/* ---------- Figuren ---------- */
+function fig(id, animated) {
+  const F = window.FIG && window.FIG[id];
+  if (!F) return '<div class="fig"></div>';
+  return '<div class="fig" role="img" aria-label="' + esc(F.n) + '">' + (animated ? F.a : F.s) + '</div>';
+}
+function figName(id) { return (window.FIG && window.FIG[id] && window.FIG[id].n) || id; }
+
+/* ---------- Seitenrahmen ---------- */
+function appbar(active) {
+  const T = [['index.html', 'Start'], ['test.html', 'Testtag'], ['plan.html', 'Plan'], ['uebungen.html', 'Übungen']];
+  return `<header class="appbar"><div class="in"><a class="brand" href="index.html"><img src="dtv-icon.png" alt="">DTV 1847</a><nav class="tabs" aria-label="Bereiche">${T.map(t => `<a href="${t[0]}"${t[0] === active ? ' class="on" aria-current="page"' : ''}>${t[1]}</a>`).join('')}</nav></div></header>`;
+}
+function faces(level) {
+  const mouth = level === 0 ? 'M6 13q4 4 8 0' : level === 2 ? 'M6 14h8' : 'M6 15q4-4 8 0';
+  return `<span class="faces" aria-hidden="true"><svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="8.5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="7" cy="8" r="1.3" fill="currentColor"/><circle cx="13" cy="8" r="1.3" fill="currentColor"/><path d="${mouth}" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>`;
+}
+function message(el, html, kind, undoFn) {
+  el.innerHTML = `<div class="msg ${kind || ''}" role="status"><span>${html}</span>${undoFn ? '<button class="btn small" type="button" data-undo>Rückgängig</button>' : ''}</div>`;
+  if (undoFn) $('[data-undo]', el).onclick = () => { undoFn(); el.innerHTML = ''; };
+}
+/* Löschen: zweiter Tipp bestätigt */
+function confirmBtn(btn, fn) {
+  if (btn.dataset.armed) { fn(); return; }
+  btn.dataset.armed = '1'; const old = btn.textContent; btn.textContent = 'Wirklich löschen? Nochmal tippen'; btn.classList.add('confirm');
+  setTimeout(() => { if (btn.isConnected) { delete btn.dataset.armed; btn.textContent = old; btn.classList.remove('confirm'); } }, 3500);
+}
+function athleteName(id) { const a = db.athletes.find(x => x.id === id); return a ? a.name : ''; }
+function groupAthletes(gid) { return db.athletes.filter(a => a.g === gid).sort((a, b) => a.name.localeCompare(b.name, 'de')); }
+function currentGroup() {
+  let g = db.set.group;
+  if (!db.groups.find(x => x.id === g)) g = db.groups[0] ? db.groups[0].id : null;
+  return g;
+}
+if ('serviceWorker' in navigator) { try { navigator.serviceWorker.register('sw.js'); } catch (e) { } }
+
+(function () {
+  const id = qs('id') || db.set.athlete;
+  function render() {
+    const a = db.athletes.find(x => x.id === id);
+    if (!a) { $('#main').innerHTML = '<div class="block"><p style="margin:0">Kein Athlet gewählt. <a href="index.html#athleten">Zur Startseite</a></p></div>'; return; }
+    setPref('athlete', a.id);
+    const ph = phaseOf(a);
+    $('#nm').textContent = a.name;
+    $('#sub').textContent = (ph.age != null ? fmtNum(ph.age, 1) + ' Jahre · ' : '') + ph.label;
+    const rows = REGIONS.map(R => {
+      const t = latestTest(a.id, R.key); const s = status(t); const sd = t ? sideDiff(t.l, t.r) : null;
+      const hist = resultsOf(a.id).filter(r => r.t[R.key] && (r.t[R.key].l != null || r.t[R.key].r != null)).slice(-3).reverse();
+      return `<div class="block"><div class="reg"><span class="amp ${s}" aria-label="${ST_LABEL[s]}">${R.short}</span><div><b>${esc(R.name)}</b> · ${ST_LABEL[s]}<div class="note" style="margin-top:2px">${esc(R.test)}</div>
+        ${t ? `<div style="margin-top:6px">${t.pain > 3 ? 'Schmerz über 3/10 beim Test. ' : ''}${t.warn ? 'Warnzeichen angegeben. ' : ''}${!t.tech ? 'Technikmangel: ' + esc(R.tech) + '. ' : ''}${t.gelb ? 'Gelb vom Trainer gesetzt. ' : ''}</div>` : '<div class="note">Noch nicht getestet.</div>'}
+        ${hist.length ? `<div class="scroll"><table class="tb" style="margin-top:6px"><tr><th>Datum</th><th>Links</th><th>Rechts</th><th>Seitendifferenz</th></tr>${hist.map(r => { const x = r.t[R.key]; const d = sideDiff(x.l, x.r); return `<tr><td>${fmtDate(r.date)}</td><td>${fmtNum(x.l, R.dec)} ${R.unit}</td><td>${fmtNum(x.r, R.dec)} ${R.unit}</td><td>${d != null ? d + ' %' : '–'}</td></tr>`; }).join('')}</table></div><p class="note">Seitendifferenz und Werte: kein Richtwert, zum Vergleich mit dem eigenen Verlauf.</p>` : ''}
+      </div></div></div>`;
+    }).join('');
+    const ms = resultsOf(a.id).map(r => ({ d: r.date, h: measureVal(r.m.h), sh: measureVal(r.m.sh), w: measureVal(r.m.w) })).filter(x => x.h || x.sh || x.w);
+    const mrows = ms.map((x, i) => { const p = i > 0 && ms[i - 1].h && x.h ? (x.h - ms[i - 1].h) / yearsBetween(ms[i - 1].d, x.d) : null; return `<tr><td>${fmtDate(x.d)}</td><td>${fmtNum(x.h, 1)}</td><td>${fmtNum(x.sh, 1)}</td><td>${fmtNum(x.w, 1)}</td><td>${p != null && isFinite(p) ? fmtNum(p, 1) : '–'}</td></tr>`; }).reverse().join('');
+    $('#main').innerHTML = `
+      <div class="btns" style="margin-top:0"><a class="btn primary" href="plan.html?id=${a.id}">Plan öffnen</a><a class="btn" href="test.html">Zum Testtag</a></div>
+      <h2 id="profil">Kapazitätsprofil</h2>
+      <p class="lead">Ampel aus dem letzten Test je Region. Rot nur bei Schmerz über 3/10 oder Warnzeichen, Gelb bei Technikmangel oder Entscheidung des Trainers.</p>
+      ${rows}
+      <h2 id="reife">Reife und Phase</h2>
+      <p class="lead">Phase nach Büsch (2017). Mit Messwerten rechnet die App den Abstand zum Wachstumsschub (Mirwald et al. 2002), sonst gilt das Kalenderalter.</p>
+      <div class="block ${ph.growth ? 'mark-yellow' : 'mark-blue'}">
+        <h3>${esc(ph.label)}</h3>
+        <p style="margin:0">Grundlage: ${esc(ph.src)}${ph.offset != null ? ` · Abstand zum Wachstumsschub ${fmtNum(ph.offset, 1)} Jahre · Alter beim Wachstumsschub etwa ${fmtNum(ph.aphv, 1)} Jahre` : ''}${ph.unsure ? ' · Übergangsjahr, bitte messen' : ''}</p>
+        ${ph.growth ? '<p style="margin:8px 0 0"><span class="badge grow">im Wachstumsschub</span> Sprungumfang gering halten. Schmerz an Ferse, Schienbeinkopf oder Kniescheibenspitze: Rot, ärztlich abklären.</p>' : ''}
+        <p class="note">Die Formel ist eine Orientierung: In einer Studie traf ein Fenster nach dieser Formel den Wachstumsschub bei 61 % der Spieler. Die Phase kannst du unten selbst festlegen.</p>
+      </div>
+      ${ms.length ? `<div class="block"><h3>Messwerte</h3><div class="scroll"><table class="tb"><tr><th>Datum</th><th>Größe (cm)</th><th>Sitzhöhe (cm)</th><th>Gewicht (kg)</th><th>Wachstum (cm/Jahr)</th></tr>${mrows}</table></div><p class="note">Wachstum pro Jahr: kein Richtwert, zum Vergleich.</p></div>` : '<p class="note">Noch keine Messwerte. Im Testtag an der Station „Messen“ eintragen.</p>'}
+      <h2 id="daten">Stammdaten</h2>
+      <div class="block">
+        <div class="grid2">
+          <label class="f">Name<input class="t" id="eName" value="${esc(a.name)}"></label>
+          <label class="f">Geburtsdatum<input class="t" type="date" id="eBirth" value="${a.birth}"></label>
+          <label class="f">Geschlecht<select class="t" id="eSex"><option value="w"${a.sex === 'w' ? ' selected' : ''}>weiblich</option><option value="m"${a.sex === 'm' ? ' selected' : ''}>männlich</option></select></label>
+          <label class="f">Phase<select class="t" id="ePhase"><option value="auto"${a.phase === 'auto' ? ' selected' : ''}>automatisch</option>${Object.keys(PHASES).map(k => `<option value="${k}"${a.phase === k ? ' selected' : ''}>${PHASES[k]}</option>`).join('')}</select></label>
+          <label class="f">Gruppe<select class="t" id="eGroup"><option value="">ohne Gruppe</option>${db.groups.map(g => `<option value="${g.id}"${a.g === g.id ? ' selected' : ''}>${esc(g.name)}</option>`).join('')}</select></label>
+        </div>
+        <div class="btns"><button class="btn primary" type="button" id="eSave">Speichern</button><button class="btn danger" type="button" id="eDel">Athlet löschen</button></div>
+        <div id="msg"></div>
+      </div>`;
+  }
+  on(document, 'click', '#eSave', () => {
+    const a = db.athletes.find(x => x.id === id); if (!a) return;
+    a.name = $('#eName').value.trim() || a.name; a.birth = $('#eBirth').value || ''; a.sex = $('#eSex').value; a.phase = $('#ePhase').value; a.g = $('#eGroup').value;
+    save(); render(); message($('#msg'), 'Gespeichert.', '');
+  });
+  on(document, 'click', '#eDel', b => confirmBtn(b, () => {
+    db.athletes = db.athletes.filter(x => x.id !== id); db.results = db.results.filter(r => r.a !== id); delete db.plans[id]; save();
+    location.href = 'index.html#athleten';
+  }));
+  render();
+})();
+</script>
+</body>
+</html>

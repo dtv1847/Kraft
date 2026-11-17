@@ -1,0 +1,11 @@
+{
+  "name": "DTV 1847 Kraft-Check",
+  "short_name": "Kraft-Check",
+  "lang": "de",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#F1F1F0",
+  "theme_color": "#D7191C",
+  "icons": [{ "src": "dtv-icon.png", "sizes": "180x180", "type": "image/png", "purpose": "any" }]
+}
